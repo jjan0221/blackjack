@@ -36,6 +36,7 @@ int gameEnd = 0; 							//game end flag
 
 //calculate the actual card number in the blackjack game
 int getCardNum(int cardnum) {
+	
 }
 
 //print the card information (e.g. DiaA)
@@ -60,13 +61,20 @@ int pullCard(void) {
 
 //player settiing
 int configUser(void) {
-	
+	printf("\n------------------ GAME start --------------------------\n");
+	printf("input the number of players (MAX:5) : \n");
 }
 
 
 //betting
 int betDollar(void) {
 	
+	int max_user; 
+	
+	printf("-------BETTING STEP-------\n");
+	printf("  -> your betting (total:$50) : ");
+	
+	return max_user;
 }
 
 
@@ -131,7 +139,7 @@ int main(int argc, char *argv[]) {
 	srand((unsigned)time(NULL));
 	
 	//set the number of players
-	configUser();
+	max_user = configUser();
 
 
 	//Game initialization --------
@@ -149,7 +157,7 @@ int main(int argc, char *argv[]) {
 		offerCards(); //1. give cards to all the players
 		
 		printCardInitialStatus();
-		printf("\n------------------ GAME start --------------------------\n");
+	
 		
 		//each player's turn
 		for () //each player
