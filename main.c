@@ -35,110 +35,75 @@ int gameEnd = 0; 							//game end flag
 //card processing functions ---------------
 
 //calculate the actual card number in the blackjack game
-int getCardNum(card[]) {
+int getCardNum(int cardnum) {
+	if (cardnum%13==0)
+	else if (cardnum%13==10)
+	else if (cardnum%13==11)
+	else if (cardnum%13==12)
+	else 
 	
 }
 
 //print the card information (e.g. DiaA)
-void printCard(card[]) {
-	if(i/13==0)
+void printCard(int cardnum) {
+		if(cardnum/13==0)
 	{
 		printf("Spade ");
-		if (i%13==0)
-			{
-				printf("A ");
-			}
-		else if	(i%13==10)
-			{
-				printf("J ");
-			}
-		else if (i%13==11)
-			{
-				printf("Q ");
-			}
-		else if (i%13==12)
-			{
-				printf("K ");
-			}
+		if (cardnum%13==0)
+			printf("A ");
+		else if	(cardnum%13==10)
+			printf("J ");
+		else if (cardnum%13==11)
+			printf("Q ");
+		else if (cardnum%13==12)
+			printf("K ");
 		else 
-			{
-				printf("%d ",(i%13));
-			}
+			printf("%d ",(cardnum%13));
 	}
-	else if(i/13==1)
+	else if(cardnum/13==1)
 	{
-		printf("Heart");
-		if (i%13==0)
-			{
-				printf("A ");
-			}
-		else if	(i%13==10)
-			{
-				printf("J ");
-			}
-		else if (i%13==11)
-			{
-				printf("Q ");
-			}
-		else if (i%13==12)
-			{
-				printf("K ");
-			}
+		printf("Heart ");
+		if (cardnum%13==0)
+			printf("A ");
+		else if	(cardnum%13==10)
+			printf("J ");
+		else if (cardnum%13==11)
+			printf("Q ");
+		else if (cardnum%13==12)
+			printf("K ");
 		else 
-			{
-				printf("%d ",(i%13));
-			}
+			printf("%d ",(cardnum%13));
 	}
-	else if(i/13==2)
+	else if(cardnum/13==2)
 	{
-		printf("Clover");
-		if (i%13==0)
-			{
-				printf("A ");
-			}
-		else if	(i%13==10)
-			{
-				printf("J ");
-			}
-		else if (i%13==11)
-			{
-				printf("Q ");
-			}
-		else if (i%13==12)
-			{
-				printf("K ");
-			}
+		printf("Clover ");
+		if (cardnum%13==0)
+			printf("A ");
+		else if	(cardnum%13==10)
+			printf("J ");
+		else if (cardnum%13==11)
+			printf("Q ");
+		else if (cardnum%13==12)
+			printf("K ");
 		else 
-			{
-				printf("%d ",(i%13));
-			}
+			printf("%d ",(cardnum%13));
 	}
-	else if(i/13==3)
+	else if(cardnum/13==3)
 	{
 		printf("Dia");
-		if (i%13==0)
-			{
-				printf("A ");
-			}
-		else if	(i%13==10)
-			{
-				printf("J ");
-			}
-		else if (i%13==11)
-			{
-				printf("Q ");
-			}
-		else if (i%13==12)
-			{
-				printf("K ");
-			}
+		if (cardnum%13==0)
+			printf("A ");
+		else if	(cardnum%13==10)
+			printf("J ");
+		else if (cardnum%13==11)
+			printf("Q ");
+		else if (cardnum%13==12)
+			printf("K ");
 		else 
-			{
-				printf("%d ",(i%13));
-			}
+			printf("%d ",(cardnum%13));
 	}
+	return cardnum;
 }
-
 
 //card array controllers -------------------------------
 
@@ -182,7 +147,7 @@ int betDollar(void) {
 	int betting_money;
 	
 	printf("-------BETTING STEP-------\n");
-	printf("  -> your betting (total:$50) : ");
+	printf("  -> your betting (total:$) : ");
 	
 	scanf("%d", &betting_money);
 	
@@ -217,6 +182,10 @@ int getAction(void) {
 	
 	printf("GO?(0) STOP?(other) ");
 	scanf("%d", &x);
+	if(x=0)
+		continue;
+	else
+		break;
 	
 	return x;
 }
