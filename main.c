@@ -35,20 +35,126 @@ int gameEnd = 0; 							//game end flag
 //card processing functions ---------------
 
 //calculate the actual card number in the blackjack game
-int getCardNum(int cardnum) {
+int getCardNum(card[]) {
 	
 }
 
 //print the card information (e.g. DiaA)
-void printCard(int cardnum) {
-	
+void printCard(card[]) {
+	if(i/13==0)
+	{
+		printf("Spade ");
+		if (i%13==0)
+			{
+				printf("A ");
+			}
+		else if	(i%13==10)
+			{
+				printf("J ");
+			}
+		else if (i%13==11)
+			{
+				printf("Q ");
+			}
+		else if (i%13==12)
+			{
+				printf("K ");
+			}
+		else 
+			{
+				printf("%d ",(i%13));
+			}
+	}
+	else if(i/13==1)
+	{
+		printf("Heart");
+		if (i%13==0)
+			{
+				printf("A ");
+			}
+		else if	(i%13==10)
+			{
+				printf("J ");
+			}
+		else if (i%13==11)
+			{
+				printf("Q ");
+			}
+		else if (i%13==12)
+			{
+				printf("K ");
+			}
+		else 
+			{
+				printf("%d ",(i%13));
+			}
+	}
+	else if(i/13==2)
+	{
+		printf("Clover");
+		if (i%13==0)
+			{
+				printf("A ");
+			}
+		else if	(i%13==10)
+			{
+				printf("J ");
+			}
+		else if (i%13==11)
+			{
+				printf("Q ");
+			}
+		else if (i%13==12)
+			{
+				printf("K ");
+			}
+		else 
+			{
+				printf("%d ",(i%13));
+			}
+	}
+	else if(i/13==3)
+	{
+		printf("Dia");
+		if (i%13==0)
+			{
+				printf("A ");
+			}
+		else if	(i%13==10)
+			{
+				printf("J ");
+			}
+		else if (i%13==11)
+			{
+				printf("Q ");
+			}
+		else if (i%13==12)
+			{
+				printf("K ");
+			}
+		else 
+			{
+				printf("%d ",(i%13));
+			}
+	}
 }
 
 
 //card array controllers -------------------------------
 
 //mix the card sets and put in the array
-int mixCardTray(void) {
+int mixCardTray() {
+	int i,j, temp; 
+	
+	srand(time(NULL));
+	
+	for(i=0;i<52;i++)
+	{
+		j=rand()%52;
+		temp = CardTray[i];
+		CardTray[i] = CardTray[j];
+		CardTray[j] = temp;
+	}
 
 }
 
@@ -61,20 +167,26 @@ int pullCard(void) {
 
 //player settiing
 int configUser(void) {
+	int n_user;
+	
 	printf("\n------------------ GAME start --------------------------\n");
-	printf("input the number of players (MAX:5) : \n");
+	printf("input the number of players (MAX:5) : ");
+	scanf("%d",&n_user);
+
+	return n_user;
 }
 
 
 //betting
 int betDollar(void) {
-	
-	int max_user; 
+	int betting_money;
 	
 	printf("-------BETTING STEP-------\n");
 	printf("  -> your betting (total:$50) : ");
 	
-	return max_user;
+	scanf("%d", &betting_money);
+	
+	return betting_money;
 }
 
 
@@ -101,6 +213,12 @@ void printCardInitialStatus(void) {
 
 int getAction(void) {
 	
+	int x;
+	
+	printf("GO?(0) STOP?(other) ");
+	scanf("%d", &x);
+	
+	return x;
 }
 
 
@@ -133,13 +251,13 @@ int checkWinner() {
 
 int main(int argc, char *argv[]) {
 	int roundIndex = 0;
-	int max_user;
+	int n_user;
 	int i;
 	
 	srand((unsigned)time(NULL));
 	
 	//set the number of players
-	max_user = configUser();
+	n_user = configUser();
 
 
 	//Game initialization --------
