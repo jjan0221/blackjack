@@ -23,7 +23,7 @@ int getIntegerInput(void) {
 //card processing functions ---------------
 
 //calculate the actual card number in the blackjack game
-void getCardNum(int CardTray[cardum]) {
+void getCardNum(int cardnum) {
 	if (cardnum%13==0)
 		CardTray[cardnum] = 1;
 	else if (cardnum%13==10)
@@ -35,34 +35,6 @@ void getCardNum(int CardTray[cardum]) {
 	else 
 		CardTray[cardnum] = cardnum%13;
 }
-
-//card array controllers -------------------------------
-
-//mix the card sets and put in the array
-void mixCardTray(int a,int b) {
-	int temp;
-	int i;
-	srand(time(NULL));
-	
-	printf("card mixed \n");
-	
-	for(i=0;i<100;i++)
-	{
-		a = rand() % 52;
-		b = rand() % 52;
-		temp = CardTray[a];
-		CardTray[a] = CardTray[b];
-		CardTray[b] = temp;
-	}
-}
-
-//get one card from the tray
-int pullCard(void) {
-	
-
-}
-
-
 //playing game functions -----------------------------
 
 
@@ -76,6 +48,7 @@ int betDollar(void) {
 	printf("  -> your betting (total:$%d) : ");
 	scanf("%d", &dollar[0]);
 	
+	//Players bet money on less than five dollars. 
 	for(i=1;i<n_user;i++)
 	{
 		dollar[i]=rand()%5;
@@ -94,19 +67,6 @@ int getAction(void) {
 	else
 		//stop
 }
-
-
-void printUserCardStatus(int user, int cardcnt) {
-	int i;
-	
-	printf("   -> card : ");
-	for (i=0;i<cardcnt;i++)
-		printCard(cardhold[user][i]);
-	printf("\t ::: ");
-}
-
-
-
 
 // calculate the card sum and see if : 1. under 21, 2. over 21, 3. blackjack
 int calcStepResult() {
