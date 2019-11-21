@@ -12,7 +12,7 @@
 #define N_MAX_BET			5
 
 #define N_MIN_ENDCARD		30
-
+#define card
 //card tray object
 int CardTray[N_CARDSET*N_CARD];
 int cardIndex = 0;							
@@ -28,22 +28,24 @@ int cardhold[N_MAX_USER+1][N_MAX_CARDHOLD];	//cards that currently the players h
 int cardSum[N_MAX_USER];					//sum of the cards
 int bet[N_MAX_USER];						//current betting 
 int gameEnd = 0; 							//game end flag
+
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 void printCard(int cardnum) {
+	
 	if(cardnum/13==0)
 	{
 		printf("Spade ");	//0<=cardnum<13 ¡æspade A~K 
 		if (cardnum%13==0)
 			printf("A ");
-		else if	(cardnum%13==10)
+		else if	(cardnum==10)
 			printf("J ");
-		else if (cardnum%13==11)
+		else if (cardnum==11)
 			printf("Q ");
-		else if (cardnum%13==12)
+		else if (cardnum==12)
 			printf("K ");
 		else 
-			printf("%d ",(cardnum%13));
+			printf("%d ",(cardnum+1));
 	}
 	else if(cardnum/13==1)
 	{
@@ -89,53 +91,53 @@ void printCard(int cardnum) {
 	}
 }
 
-//Function to execute mixCardTray
-void swap(int *px, int *py)
-{
+void swap(int px, int py){	
 	int tmp;
 	
-	tmp = *px;
-	*px = *py;
-	*py = tmp;
+	int i;
+	
+	tmp = CardTray[px];
+	CardTray[px] = CardTray[py];
+	CardTray[py] = tmp;
 }
 
-//mix the card sets and put in the array
 void mixCardTray(void) {
+	
 	int temp;
-	int i, j, a;
-	srand(time(NULL));
+	int j, a, b;
 	
-	a = rand()%52;
-	
-	printf("card mixed \n");
-	
+	int i;
 	for(i=0;i<52;i++)
 	{
 		CardTray[i]=i;
 	}
+	srand(time(NULL));
 	
 	for(j=0;j<52;j++)
 	{
-		swap(CardTray[j], CardTray[i]);
+		a = rand()%52;
+		b = rand()%52;
+		
+		swap(a,b);		
 	}
+
+	printf("card mixed \n");
 }
 
 
 //get one card from the tray
 int pullCard(void) {
 	
-	int i;
-	i = cardIndex;
+	cardIndex;
+	CardTray[cardIndex];
 	cardIndex++;
-	CardTray[i];
-	
-	return CardTray[i];
+
+	return CardTray[cardIndex];
 }
 
 //offering initial 2 cards
 void offerCards(void) {
 	int i;
-	int n_user;
 	//1. give two card for each players
 	for (i=0;i<n_user;i++)
 	{
@@ -181,4 +183,5 @@ void printUserCardStatus(int user, int cardcnt) {
 	printf("\t ::: ");
 }
 
-void main(void);
+void main(void){
+};
